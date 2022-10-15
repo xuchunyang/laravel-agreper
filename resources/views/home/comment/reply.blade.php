@@ -3,6 +3,10 @@
         回复评论
     </x-slot:title>
 
+    <x-slot:pageNav>
+        <x-page-nav :forum="$forum" :thread="$thread"/>
+    </x-slot:pageNav>
+
     {{ $comment->content }}
 
     <form action="{{ route('comment.store', ['forum' => $forum, 'thread' => $thread]) }}"

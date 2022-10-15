@@ -3,6 +3,10 @@
         编辑主题
     </x-slot:title>
 
+    <x-slot:pageNav>
+        <x-page-nav :forum="$forum" :thread="$thread"/>
+    </x-slot:pageNav>
+
     <form action="{{ route('thread.update', ['forum' => $forum, 'thread' => $thread]) }}" method="post">
         @csrf
         <table class="form">
@@ -27,7 +31,7 @@
             </tr>
             </tbody>
         </table>
-        <p><input type="submit" value="编辑话题"></p>
+        <p><input type="submit" value="保存话题"></p>
     </form>
 
 </x-layout>

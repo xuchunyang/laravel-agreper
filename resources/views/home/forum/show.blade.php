@@ -3,6 +3,10 @@
         {{ $forum->name }}
     </x-slot:title>
 
+    <x-slot:pageNav>
+        <x-page-nav :forum="$forum"/>
+    </x-slot:pageNav>
+
     @if($forum->description)
         <p>{{ $forum->description }}</p>
     @endif

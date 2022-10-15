@@ -20,7 +20,8 @@ class CommentController extends Controller
         $validated['user_id'] = User::first()->id;
         $thread->comments()->create($validated);
 
-        return back()->with('success', '评论发表成功！');
+        return redirect(route('thread.show', ['forum' => $forum, 'thread' => $thread]))
+            ->with('success', '评论发表成功！');
     }
 
     public function show(Request $request, Forum $forum, Thread $thread, Comment $comment)

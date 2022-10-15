@@ -3,6 +3,11 @@
         编辑评论
     </x-slot:title>
 
+    <x-slot:pageNav>
+        <x-page-nav :forum="$forum" :thread="$thread"/>
+    </x-slot:pageNav>
+
+
     <form action="{{ route('comment.update', ['forum' => $forum, 'thread' => $thread, 'comment' => $comment]) }}"
           method="post">
         @csrf

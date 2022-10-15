@@ -3,6 +3,10 @@
         {{ $thread->title }}
     </x-slot:title>
 
+    <x-slot:pageNav>
+        <x-page-nav :forum="$forum" :thread="$thread"/>
+    </x-slot:pageNav>
+
     <p class="small">
         <i><a href="">{{ $thread->user->name }}</a> - 20 minutes ago</i>
         <a href="{{ route('thread.edit', ['forum' => $forum, 'thread' => $thread]) }}"> edit</a>

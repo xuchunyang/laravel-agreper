@@ -1,5 +1,5 @@
 <!doctype html>
-@props(['title' => null])
+@props(['title' => null, 'pageNav' => null])
 <html lang="zh">
 <head>
     <meta charset="utf-8">
@@ -145,6 +145,17 @@
         .small {
             font-size: 85%;
         }
+
+        .page-nav {
+            margin: 15px 0;
+        }
+
+        .page-nav > * + *::before {
+            display: inline-block;
+            content: '>';
+            opacity: 0.6;
+            padding: 0 5px;
+        }
     </style>
 </head>
 <body>
@@ -162,6 +173,8 @@
 </nav>
 
 <main>
+    {{ $pageNav }}
+
     <h1>{{ $pageTitle }}</h1>
 
     @if(session('success'))
