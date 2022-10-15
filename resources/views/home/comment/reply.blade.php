@@ -1,14 +1,14 @@
 <x-layout>
     <x-slot:title>
-        {{ $thread->title }}
+        回复评论
     </x-slot:title>
 
-    <p>{{ $comment->content }}</p>
+    {{ $comment->content }}
 
     <form action="{{ route('comment.store', ['forum' => $forum, 'thread' => $thread]) }}"
           method="post">
         @csrf
-        <input type="hidden" name="parent_id" value="{{ $comment->id }}">
+        <input type="hidden" name="parent_id" value="{{ $comment['id'] }}">
         @error('parent_id')
         <p class="validation-error">{{ $message }}</p>
         @enderror
@@ -18,5 +18,4 @@
         @enderror
         <p><input type="submit" value="发表评论"></p>
     </form>
-
 </x-layout>

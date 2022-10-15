@@ -20,17 +20,20 @@
         <p><input type="submit" value="发表评论"></p>
     </form>
 
-    @foreach($thread->comments as $comment)
-        <div class="comment">
+    @foreach($comments as $comment)
+        <div class="comment"
+             style="margin-left: {{ $comment->depth * 20 }}px">
             <span class="small">
-                <i><a href="">{{ $comment->user->name }}</a> - {{ $comment->created_at->shortRelativeToNowDiffForHumans() }}</i>
+                <i><a href="">{{ $comment->user->name }}</a> - {{ $comment->created_at->diffForHumans() }}</i>
                 |
-                <a href="{{ route('comment.edit', ['forum' => $forum, 'thread' => $thread, 'comment' => $comment]) }}">edit</a>
-                <a href="{{ route('comment.delete', ['forum' => $forum, 'thread' => $thread, 'comment' => $comment]) }}">delete</a>
+                <a href="{{ route('comment.edit', ['forum' => $forum, 'thread' => $thread, 'comment' => $comment->id]) }}">edit</a>
+                <a href="{{ route('comment.delete', ['forum' => $forum, 'thread' => $thread, 'comment' => $comment->id]) }}">delete</a>
             </span>
             <div>
-                <p>{{ $comment->content }}</p>
-                <a href="{{ route('comment.show', ['forum' => $forum, 'thread' => $thread, 'comment' => $comment]) }}">回复</a>
+                <p>{{ $comment['content'] }}</p>
+                <small>
+                    <a href="{{ route('comment.show', ['forum' => $forum, 'thread' => $thread, 'comment' => $comment['id']]) }}">回复</a>
+                </small>
             </div>
         </div>
     @endforeach

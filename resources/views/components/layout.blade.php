@@ -94,7 +94,6 @@
         }
 
         .comment {
-            margin-left: 20px;
             margin-top: 15px;
             margin-bottom: 15px;
             padding-left: 10px;

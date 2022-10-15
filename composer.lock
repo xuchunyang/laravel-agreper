@@ -4,8 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccbd816a07b206f971042295b899d1ba",
+    "content-hash": "86e3cb105a428511ffd150e6a530350e",
     "packages": [
+        {
+            "name": "bluem/tree",
+            "version": "3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BlueM/Tree.git",
+                "reference": "2369895e54397115e99252dde42d929897d6dbc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BlueM/Tree/zipball/2369895e54397115e99252dde42d929897d6dbc4",
+                "reference": "2369895e54397115e99252dde42d929897d6dbc4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.3 || >=8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=8.0 || >=9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BlueM\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Blüm",
+                    "email": "carsten@bluem.net"
+                }
+            ],
+            "description": "Library for handling tree structures based on parent IDs",
+            "homepage": "https://github.com/BlueM/Tree",
+            "keywords": [
+                "hierarchical",
+                "tree"
+            ],
+            "support": {
+                "issues": "https://github.com/BlueM/Tree/issues",
+                "source": "https://github.com/BlueM/Tree/tree/3.2"
+            },
+            "time": "2021-12-30T15:21:38+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.10.2",

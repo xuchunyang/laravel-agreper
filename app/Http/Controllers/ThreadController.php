@@ -38,6 +38,7 @@ class ThreadController extends Controller
         return view('home.thread.show', [
             'forum' => $forum,
             'thread' => $thread,
+            'comments' => $thread->commentsFlatTree(),
         ]);
     }
 
@@ -48,7 +49,6 @@ class ThreadController extends Controller
             'thread' => $thread,
         ]);
     }
-
 
     public function update(Request $request, Forum $forum, Thread $thread)
     {
