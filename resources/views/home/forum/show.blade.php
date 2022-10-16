@@ -15,6 +15,8 @@
 
     @can('create', \App\Models\Thread::class)
         <p><a href="{{ route('thread.create', ['forum' => $forum]) }}">新建话题</a></p>
+    @else
+        <p>先<a href="{{ route('login') }}">登陆</a>，后新建话题</p>
     @endcan
 
     <table>

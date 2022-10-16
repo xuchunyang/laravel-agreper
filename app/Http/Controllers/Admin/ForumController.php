@@ -12,7 +12,7 @@ class ForumController extends Controller
     {
         $validated = $request->validateWithBag('newForum', [
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:10'],
+            'description' => ['nullable', 'string'],
         ]);
         Forum::create($validated);
         return back()->with('success', '成功添加论坛！');

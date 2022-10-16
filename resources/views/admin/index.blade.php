@@ -150,7 +150,7 @@
                         type="text"
                         id="new-forum-name"
                         name="name"
-                        value="{{ $errors->newForum->has('name') ? old('name') : '' }}">
+                        value="{{ $errors->newForum->any() ? old('name') : '' }}">
                     @error('name', 'newForum')
                     <span class="validation-error">{{ $message }}</span>
                     @enderror
@@ -162,7 +162,7 @@
                     <textarea
                         id="new-forum-description"
                         name="description"
-                    >{{ $errors->newForum->has('description') ? old('description') : '' }}</textarea>
+                    >{{ $errors->newForum->any() ? old('description') : '' }}</textarea>
                     @error('description', 'newForum')
                     <span class="validation-error">{{ $message }}</span>
                     @enderror
