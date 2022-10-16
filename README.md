@@ -1,5 +1,7 @@
 # laravel-agreper - 极简、无需 JS 的论坛
 
+[Demo](https://laravel-agreper.xuchunyang.cn/)
+
 ![](screenshots/thread.png)
 
 laravel-agreper 的灵感来自 [agreper](https://github.com/Demindiro/agreper)，我的初衷是学习 Laravel 框架。
