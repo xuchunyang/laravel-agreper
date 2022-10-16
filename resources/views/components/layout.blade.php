@@ -163,12 +163,26 @@
 <nav>
     <a class="logo" href="/">A</a>
     <div style="margin:auto"></div>
-    @php
-        $user = \App\Models\User::first();
-    @endphp
-    <a href="{{ route('user.edit', ['user' => $user]) }}">{{ $user->name }}</a>
-    <span> | </span><a href="/admin/">Admin panel</a>
-    <span> | </span><a href="/logout/">Logout</a><span> | </span>
+    @auth
+        <a href="{{ route('user.edit', ['user' => request()->user()]) }}">{{ request()->user()->name }}</a>
+        <span> | </span>
+    @endauth
+    @can('admin')
+        <a href="/admin/">Admin panel</a>
+        <span> | </span>
+    @endcan
+    @auth
+        <a href="{{ route('logout') }}">退出</a>
+        <span> | </span>
+    @endauth
+    @guest
+        @can('register')
+            <a href="{{ route('register') }}">注册</a>
+            <span> | </span>
+        @endcan
+        <a href="{{ route('login') }}">登陆</a>
+        <span> | </span>
+    @endguest
     <a href="/help/">Help</a>
 </nav>
 

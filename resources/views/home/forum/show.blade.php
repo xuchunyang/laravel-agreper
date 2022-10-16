@@ -11,7 +11,9 @@
         <p>{{ $forum->description }}</p>
     @endif
 
-    <p><a href="{{ route('thread.create', ['forum' => $forum]) }}">新建话题</a></p>
+    @can('create', \App\Models\Thread::class)
+        <p><a href="{{ route('thread.create', ['forum' => $forum]) }}">新建话题</a></p>
+    @endcan
 
     <table>
         <tbody>

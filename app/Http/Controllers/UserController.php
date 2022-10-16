@@ -35,6 +35,7 @@ class UserController extends Controller
             ],
         ]);
         $user->update($validated);
-        return back()->with('success', '你的信息更新成功！');
+        return redirect(route('user.show', ['user' => $user]))
+            ->with('success', '你的信息更新成功！');
     }
 }

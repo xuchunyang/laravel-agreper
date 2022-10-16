@@ -3,6 +3,10 @@
         新建主题
     </x-slot:title>
 
+    <x-slot:pageNav>
+        <x-page-nav :forum="$forum"/>
+    </x-slot:pageNav>
+
     <form action="{{ route('thread.store', ['forum' => $forum]) }}" method="post">
         @csrf
         <table class="form">

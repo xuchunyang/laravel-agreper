@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Forum;
 use App\Models\Thread;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadController extends Controller
 {
@@ -23,8 +23,7 @@ class ThreadController extends Controller
             'content' => ['required', 'string'],
         ]);
         $validated['forum_id'] = $forum->id;
-        // FIXME Auth user
-        $validated['user_id'] = User::first()->id;
+        $validated['user_id'] = Auth::user()->id;
 
         $thread = Thread::create($validated);
         return redirect(route('thread.show', [
@@ -52,6 +51,7 @@ class ThreadController extends Controller
 
     public function update(Request $request, Forum $forum, Thread $thread)
     {
+        $this->authorize('update', $thread);
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string'],

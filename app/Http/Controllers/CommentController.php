@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Forum;
 use App\Models\Thread;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -17,7 +16,7 @@ class CommentController extends Controller
             'content' => ['required', 'string'],
             'parent_id' => ['nullable', 'exists:comments,id'],
         ]);
-        $validated['user_id'] = User::first()->id;
+        $validated['user_id'] = Auth::user()->id;
         $thread->comments()->create($validated);
 
         return redirect(route('thread.show', ['forum' => $forum, 'thread' => $thread]))
@@ -48,10 +47,9 @@ class CommentController extends Controller
             'content' => ['required', 'string'],
         ]);
         $comment->update($validated);
-        return redirect(route('comment.show', [
+        return redirect(route('thread.show', [
             'forum' => $forum,
             'thread' => $thread,
-            'comment' => $comment
         ]))->with('success', '评论编辑成功！');
     }
 

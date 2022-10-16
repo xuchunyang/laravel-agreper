@@ -11,6 +11,10 @@
         <table>
             <tbody>
             <tr>
+                <td>ID</td>
+                <td>{{ $user->id }}</td>
+            </tr>
+            <tr>
                 <td><label for="name">用户名</label></td>
                 <td>
                     <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}">
@@ -18,11 +22,7 @@
                 </td>
             </tr>
             <tr>
-                <td>ID</td>
-                <td>{{ $user->id }}</td>
-            </tr>
-            <tr>
-                <td><label for="about">关于</label></td>
+                <td><label for="about">个人介绍</label></td>
                 <td>
                     <textarea id="about" name="about">{{ old('about', $user->about) }}</textarea>
                     @error('about')<span class="validation-error">{{ $message }}</span>@enderror
