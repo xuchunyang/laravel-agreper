@@ -7,7 +7,11 @@
         <x-page-nav :forum="$forum" :thread="$thread"/>
     </x-slot:pageNav>
 
-    {{ $comment->content }}
+    <x-comment-status-line :comment="$comment" :forum="$forum" :thread="$thread"/>
+
+    <x-markdown class="markdown">
+        {!! $comment->content !!}
+    </x-markdown>
 
     <form action="{{ route('comment.store', ['forum' => $forum, 'thread' => $thread]) }}"
           method="post">

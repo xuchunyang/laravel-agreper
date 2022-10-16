@@ -126,3 +126,5 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::patch('/admin/user/{user}/role', [AdminUserController::class, 'role'])
         ->name('admin.user.role');
 });
+
+Route::get('/help', fn() => view('help'))->name('help');

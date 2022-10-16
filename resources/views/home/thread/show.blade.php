@@ -19,7 +19,9 @@
         @endcan
     </p>
 
-    <p>{{ $thread->content }}</p>
+    <x-markdown class="markdown">
+        {!! $thread->content !!}
+    </x-markdown>
 
     @can('create', \App\Models\Comment::class)
         <form action="{{ route('comment.store', ['forum' => $forum, 'thread' => $thread]) }}" method="post">
@@ -38,31 +40,11 @@
     @foreach($comments as $comment)
         <div class="comment"
              style="margin-left: {{ $comment->depth * 20 }}px">
-            <span class="small">
-                <i><a href="{{ route('user.show', ['user' => $comment->user]) }}">
-                        {{ $comment->user->name }}
-                    </a>
-                    - {{ $comment->created_at->diffForHumans() }}
-                    @if($comment->updated_at->gt($comment->created_at))
-                        (修改于 {{ $comment->updated_at->diffForHumans() }})
-                    @endif
-                </i>
-                @can('update', $comment)
-                    |
-                    <a href="{{ route('comment.edit', ['forum' => $forum, 'thread' => $thread, 'comment' => $comment->id]) }}">
-                        编辑
-                    </a>
-                @endcan
-                @can('delete', $comment)
-                    @if(! \App\Models\Comment::query()->where('parent_id', $comment->id)->exists())
-                        <a href="{{ route('comment.delete', ['forum' => $forum, 'thread' => $thread, 'comment' => $comment->id]) }}">
-                        删除
-                    </a>
-                    @endif
-                @endcan
-            </span>
+            <x-comment-status-line :comment="$comment" :forum="$forum" :thread="$thread"/>
             <div>
-                <p>{{ $comment['content'] }}</p>
+                <x-markdown class="markdown">
+                    {!! $comment->content !!}
+                </x-markdown>
                 @can('create', \App\Models\Comment::class)
                     <a href="{{ route('comment.show', ['forum' => $forum, 'thread' => $thread, 'comment' => $comment['id']]) }}">
                         <small>回复</small>

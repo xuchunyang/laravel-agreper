@@ -8,7 +8,9 @@
     </x-slot:pageNav>
 
     @if($forum->description)
-        <p>{{ $forum->description }}</p>
+        <x-markdown class="markdown">
+            {!! $forum->description !!}
+        </x-markdown>
     @endif
 
     @can('create', \App\Models\Thread::class)

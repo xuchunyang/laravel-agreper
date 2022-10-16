@@ -156,6 +156,12 @@
             opacity: 0.6;
             padding: 0 5px;
         }
+
+        .markdown pre {
+            background-color: #fffff1;
+            padding: 1em;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -165,23 +171,25 @@
     <div style="margin:auto"></div>
     @auth
         <a href="{{ route('user.edit', ['user' => request()->user()]) }}">{{ request()->user()->name }}</a>
+        <span> | </span>
     @endauth
     @can('admin')
-        <span> | </span>
         <a href="{{ route('admin.index') }}">管理面板</a>
+        <span> | </span>
     @endcan
     @auth
-        <span> | </span>
         <a href="{{ route('logout') }}">退出</a>
+        <span> | </span>
     @endauth
     @guest
         @can('register')
-            <span> | </span>
             <a href="{{ route('register') }}">注册</a>
+            <span> | </span>
         @endcan
-        <span> | </span>
         <a href="{{ route('login') }}">登陆</a>
+        <span> | </span>
     @endguest
+    <a href="{{ route('help') }}">帮助</a>
 </nav>
 
 <main>
