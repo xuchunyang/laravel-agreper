@@ -165,25 +165,23 @@
     <div style="margin:auto"></div>
     @auth
         <a href="{{ route('user.edit', ['user' => request()->user()]) }}">{{ request()->user()->name }}</a>
-        <span> | </span>
     @endauth
     @can('admin')
-        <a href="/admin/">Admin panel</a>
         <span> | </span>
+        <a href="{{ route('admin.index') }}">管理面板</a>
     @endcan
     @auth
-        <a href="{{ route('logout') }}">退出</a>
         <span> | </span>
+        <a href="{{ route('logout') }}">退出</a>
     @endauth
     @guest
         @can('register')
-            <a href="{{ route('register') }}">注册</a>
             <span> | </span>
+            <a href="{{ route('register') }}">注册</a>
         @endcan
-        <a href="{{ route('login') }}">登陆</a>
         <span> | </span>
+        <a href="{{ route('login') }}">登陆</a>
     @endguest
-    <a href="/help/">Help</a>
 </nav>
 
 <main>

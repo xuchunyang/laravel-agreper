@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
         Log::channel('stderr')->info('Form Created');
 
         User::create([
+            'role' => 'admin',
             'name' => ask('管理员用户名: '),
             'password' => Hash::make(ask('管理员密码: ')),
         ]);

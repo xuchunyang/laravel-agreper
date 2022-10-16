@@ -122,4 +122,7 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
 
     Route::post('/admin/user', [AdminUserController::class, 'store'])
         ->name('admin.user.store');
+
+    Route::patch('/admin/user/{user}/role', [AdminUserController::class, 'role'])
+        ->name('admin.user.role');
 });

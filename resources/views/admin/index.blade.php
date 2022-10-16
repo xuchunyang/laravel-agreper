@@ -181,6 +181,7 @@
         <tr>
             <th>ID</th>
             <th>姓名</th>
+            <th>角色</th>
             <th>加入时间</th>
         </tr>
         </thead>
@@ -189,6 +190,21 @@
             <tr>
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->name }}</td>
+                <td>
+                    <form action="{{ route('admin.user.role', ['user' => $user]) }}" method="post">
+                        @csrf
+                        @method('PATCH')
+                        <select name="role">
+                            @foreach(\App\Models\User::$roles as $role)
+                                <option @selected($role === $user->role)>{{ $role }}</option>
+                            @endforeach
+                        </select>
+                        @error('role', 'setRole' . $user->id)
+                        <span class="validation-error">{{ $message }}</span>
+                        @enderror
+                        <input type="submit" name="设置角色">
+                    </form>
+                </td>
                 <td>{{ $user->created_at->longRelativeToNowDiffForHumans() }}</td>
             </tr>
         @endforeach
