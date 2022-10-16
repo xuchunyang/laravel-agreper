@@ -33,18 +33,18 @@ class DatabaseSeeder extends Seeder
             'name' => 'Agreper',
             'registration_enabled' => true,
         ]);
-        Log::channel('stderr')->info('Setting Created');
+        Log::channel('stderr')->info('创建网站设置');
 
         Forum::create([
             'name' => '闲聊灌水',
         ]);
-        Log::channel('stderr')->info('Form Created');
+        Log::channel('stderr')->info('创建示例论坛【闲聊灌水】');
 
         User::create([
             'role' => 'admin',
             'name' => ask('管理员用户名: '),
             'password' => Hash::make(ask('管理员密码: ')),
         ]);
-        Log::channel('stderr')->info('Admin Created');
+        Log::channel('stderr')->info('管理员创建成功');
     }
 }
